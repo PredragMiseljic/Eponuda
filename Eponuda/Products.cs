@@ -155,22 +155,16 @@ namespace Eponuda
         [Order(7)]
         public void visitWebsite()
         {
-            IWebElement link = null;
-            link = browser.FindElement(By.XPath("//*[@id='csksv']/div[1]/table/tbody/tr[2]/td[6]/a/div/span"));
-
-            if (link != null)
+            IWebElement[] menus = browser.FindElements(By.XPath("//*[@id='csksv']/div[1]/table/tbody/tr[2]")).ToArray();
+          
+            for (int i = 0; i < 1; i++)
             {
-                link.Click();
+                IWebElement menu = menus[i].FindElement(By.TagName("span"));
+                menu.Click();
+
                 Assert.Pass("Link clicked!");
-
+  
             }
-            else
-            {
-                Assert.Fail("Link is not clicked!");
-            }
-
-
-        }
-         
+        }     
     }
 }
