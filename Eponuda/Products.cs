@@ -28,8 +28,8 @@ namespace Eponuda
         [Order(1)]
         public void mouseOver()
         {
-            IWebElement menu = browser.FindElement(By.XPath("//*[@id='katMn']/li")); //*[@id="katMn"]/li
-            IWebElement subMenu = browser.FindElement(By.XPath("//*[@id='katMn']/li/ul/li[10]/a"));  //*[@id="katMn"]/li/ul/li[10]/a
+            IWebElement menu = browser.FindElement(By.XPath("//*[@id='katMn']/li"));
+            IWebElement subMenu = browser.FindElement(By.XPath("//*[@id='katMn']/li/ul/li[9]/a"));
 
             Actions builder = new Actions(browser);
             Thread.Sleep(1000);
@@ -156,38 +156,15 @@ namespace Eponuda
         public void visitWebsite()
         {
             IWebElement[] menus = browser.FindElements(By.XPath("//*[@id='csksv']/div[1]/table/tbody/tr[2]")).ToArray();
-            //link = browser.FindElement(By.XPath("//*[@id='csksv']/div[1]/table/tbody/tr[2]/td[6]/a/div/span"));
+          
+            for (int i = 0; i < 1; i++)
+            {
+                IWebElement menu = menus[i].FindElement(By.TagName("span"));
+                menu.Click();
 
-            //if (link != null)
-            //{
-            //    link.Click();
-            //    Assert.Pass("Link clicked!");
-
-            //}
-            //else
-            //{
-            //    Assert.Fail("Link is not clicked!");
-            //}
-            //for (int i = 0; i < menus.Length; i++)
-            //{
-            //    IWebElement menu = menus[i].FindElement(By.TagName("span"));
-
-            //        if (menus == 3)
-            //        {
-            //            menu.Click();
-            //            Assert.Pass("Link clicked!");
-
-            //        }
-            //        else
-            //        {
-            //            Assert.Fail("It not clicked!");
-
-            //        }
-           
-            //}
-
-
-        }
-         
+                Assert.Pass("Link clicked!");
+  
+            }
+        }     
     }
 }
